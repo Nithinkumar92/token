@@ -12,8 +12,10 @@ actor Token {
     private stable var balanceEntries : [(Principal, Nat)] = [];
     // Initialize a HashMap for balances with Principal keys and Nat values
    private var balances = HashMap.HashMap<Principal, Nat>(1, Principal.equal, Principal.hash);
-    if(balances.size()<1){
-        balances.put(owner,totalSupply);
+    public func init() {
+        if (balances.size() < 1) {
+            balances.put(owner, totalSupply);
+        }
     };
 
     // Constructor-like function to initialize balances
